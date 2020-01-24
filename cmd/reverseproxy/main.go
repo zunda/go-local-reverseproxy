@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"net/http/httputil"
@@ -14,11 +13,11 @@ func main() {
 	if bport == "" {
 		bport = "5000"
 	}
-	bURL, err := url.Parse(fmt.Sprintf("http://localhost:%s", bport))
+	bURL, err := url.Parse("http://localhost:" + bport)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Println("Backend URL: ", bURL)
+	log.Println("Backend URL: " + bURL.String())
 	h := http.NewServeMux()
 	h.HandleFunc("/", httputil.NewSingleHostReverseProxy(bURL).ServeHTTP)
 
