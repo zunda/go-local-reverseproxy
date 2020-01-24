@@ -16,7 +16,7 @@ func main() {
 	}
 	bURL, err := url.Parse(fmt.Sprintf("http://localhost:%s", bport))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	log.Println("Backend URL: ", bURL)
 	h := http.NewServeMux()
